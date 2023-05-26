@@ -17,7 +17,4 @@ public class Category {
     String name;
     String description;
     boolean isDeleted;
-
-    @OneToOne
-    Transaction transaction;
 }
