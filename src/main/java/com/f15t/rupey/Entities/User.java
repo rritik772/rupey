@@ -1,8 +1,11 @@
 package com.f15t.rupey.Entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,7 +15,7 @@ import lombok.Data;
 public class User {
 
     @Id
-    Long id;
+    Long userId;
 
     @Column(unique = true)
     String username;
@@ -20,4 +23,7 @@ public class User {
     String password;
     String fullName;
     String Currency;
+
+    @OneToMany(mappedBy = "user")
+    private List<Transaction> transaction;
 }

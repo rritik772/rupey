@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Transaction {
     
     @Id
-    Long id;
+    Long transactionId;
 
     String name;
     String description;
@@ -28,4 +30,8 @@ public class Transaction {
 
     @OneToOne
     Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    User user;
 }
