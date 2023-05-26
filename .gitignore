@@ -33,4 +33,4 @@ build/
 .vscode/
 
 .env.*
-docker-mysql.sh
+/docker-mysql.sh
