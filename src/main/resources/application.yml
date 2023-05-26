@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rupey
+    username: rupey
+    password: 7788990012
