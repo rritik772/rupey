@@ -1,8 +1,6 @@
 package com.f15t.rupey.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,12 +10,13 @@ import lombok.Data;
 public class Category {
     
     @Id
-    Long categoryId;
+    private Long categoryId;
 
-    String name;
-    String description;
-    boolean isDeleted;
+    private String name;
+    private String description;
+    private boolean isDeleted;
 
-    @OneToOne
-    User user;
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 }

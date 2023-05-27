@@ -1,8 +1,6 @@
 package com.f15t.rupey.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Account {
     @Id
-    Long accountId;
+    private Long accountId;
 
-    String bank;
-    String account_holder;
-    Float currentBalance;
-    Float income;
-    Float expense;
+    private String bank;
+    private String account_holder;
+    private Float currentBalance;
+    private Float income;
+    private Float expense;
     
-    @OneToOne
-    User user;
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 }

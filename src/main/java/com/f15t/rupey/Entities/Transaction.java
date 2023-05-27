@@ -18,20 +18,22 @@ import lombok.NoArgsConstructor;
 public class Transaction {
     
     @Id
-    Long transactionId;
+    private Long transactionId;
 
-    String name;
-    String description;
-    Float amount;
-    Date date;
-
-    @OneToOne
-    Category category;
+    private String name;
+    private String description;
+    private Float amount;
+    private Date date;
 
     @OneToOne
-    Account account;
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    User user;
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 }

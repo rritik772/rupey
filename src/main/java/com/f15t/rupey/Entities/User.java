@@ -8,22 +8,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
-    Long userId;
+    private Long userId;
 
     @Column(unique = true)
-    String username;
+    private String username;
 
-    String password;
-    String fullName;
-    String Currency;
+    private String password;
+    private String fullName;
+    private String Currency;
 
     @OneToMany(mappedBy = "user")
-    private List<Transaction> transaction;
+    private List<Transaction> transactions;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accounts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Category> categories;
 }
