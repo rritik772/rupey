@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountDaoInterface {
     Account createAccount(Account account);
-    Account getAccount(String username);
+    Account getAccount(Long id);
     Account updateAccount(Account account);
     Account deleteAccount(Account account);
 }

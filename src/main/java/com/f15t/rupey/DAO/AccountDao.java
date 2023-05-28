@@ -7,20 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AccountDAO implements AccountDaoInterface {
+public class AccountDao implements AccountDaoInterface {
 
     AccountRepository accountRepository;
 
     @Autowired
-    AccountDAO(AccountRepository accountRepository) {}
-
-    public Account createAccount(Account account) {
-        Account temp = accountRepository.save(account);
-        return temp;
+    AccountDao(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
-    public Account getAccount(String username) {
-        return accountRepository.getReferenceById(5L);
+    public Account createAccount(Account account) {
+        return accountRepository.saveAndFlush(account);
+    }
+
+    public Account getAccount(Long id) {
+        return accountRepository.getReferenceById(id);
     }
 
     public Account updateAccount(Account account) {
@@ -28,6 +29,7 @@ public class AccountDAO implements AccountDaoInterface {
     }
 
     public Account deleteAccount(Account account) {
-        return null;
+        accountRepository.delete(account);
+        return account;
     }
 }

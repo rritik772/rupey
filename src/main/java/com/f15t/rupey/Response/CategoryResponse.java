@@ -11,13 +11,10 @@ import java.util.Optional;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountResponse {
-    Optional<Long> accountId;
-
-    String bank;
-    String accountHolder;
-    Float currentBalance;
-    Float income;
-    Float expense;
-    String username;
+public class CategoryResponse {
+    private Optional<Long> CategoryId;
+    private String name;
+    private String description;
+    private boolean isDeleted;
+    private String username;
 }
